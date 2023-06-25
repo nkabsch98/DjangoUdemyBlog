@@ -4,19 +4,15 @@
 {% block title %} My unique blog {% endblock title %}
 
 {% block css_files %}
+<link rel="stylesheet" href="{% static "blog/post.css" %}">
 <link rel="stylesheet" href="{% static "blog/index.css" %}">
 {% endblock %}
 
 {% block content %}
-<header id="main-navigation">
-    <h1><a href="">Nikodem's Blog</a></h1>
-    <nav>
-        <a href="">All Posts</a>
-    </nav>
-</header>
+
 <section id="welcome">
     <header>
-        <img src="" alt="The Author of this blog">
+        <img src="{% static "blog/images/nico.png" %}" alt="The Author of this blog">
         <h2>Nikodem's BLOG</h2>
     </header>
     <p>Hi, this is my first complex django page!</p>
@@ -26,18 +22,9 @@
     <h2>My Latest Thoughts</h2>
 
     <ul>
-        <li>
-            <article class="post">
-                <a href="">
-                    <img src="" alt="Mountains in Poland" />
-                    <div class="post_content">
-                        <h3>Mountains in Poland</h3>
-                        <p>There's nothing like the views you get when hiking in the mountains! 
-                            There are many beautyful summits in Poland!</p>
-                    </div>
-                </a>
-            </article>
-        </li>
+        {% for post in posts %}
+            {% include "blog/includes/post.html" %}
+        {% endfor %}
     </ul>
 </section>
 
